@@ -1,5 +1,8 @@
 import { useState } from "react"
-const workoutForm=()=>{
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext"
+
+const WorkoutForm=()=>{
+    const{dispatch}=useWorkoutsContext()
     const [title,setTitle]=useState('')
     const [load,setLoad]=useState('')
     const [reps,setReps]=useState('')
@@ -28,6 +31,7 @@ const workoutForm=()=>{
             setReps('')
             setError(null)
             console.log('new workout added',json)
+            dispatch({type:'CREATE_WORKOUT',payload:json})
         }
     }
 
@@ -63,4 +67,4 @@ const workoutForm=()=>{
     )
 }
 
-export default workoutForm
+export default WorkoutForm

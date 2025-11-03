@@ -1,35 +1,34 @@
-import { useEffect,useState } from "react"
+import { useEffect } from "react";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import WorkoutDetails from "../components/WorkoutDetails";
+import WorkoutForm from "../components/WorkoutForm";
 
-//components
-import WorkoutDetails from'../components/WorkoutDetails'
-import workoutForm from "../components/WorkoutForm"
+const Home = () => {
+  const { workouts, dispatch } = useWorkoutsContext();
 
-const Home=()=>{
+  useEffect(() => {
+    const fetchWorkouts = async () => {
+      const response = await fetch("/api/workouts");
+      const json = await response.json();
 
-    const[workouts,setWorkouts]=useState(null)
+      if (response.ok) {
+        dispatch({ type: "SET_WORKOUTS", payload: json });
+      }
+    };
+    fetchWorkouts();
+  }, [dispatch]);
 
-    useEffect(()=>{
-        const fetchWorkouts=async()=>{
-            const response=await fetch('/api/workouts')
-            const json=await response.json()
+  return (
+    <div className="home">
+      <div className="workouts">
+        {workouts &&
+          workouts.map((workout) => (
+            <WorkoutDetails key={workout._id} workout={workout} />
+          ))}
+      </div>
+      <WorkoutForm />
+    </div>
+  );
+};
 
-            if(response.ok){
-                setWorkouts(json)
-            }
-        }
-        fetchWorkouts()
-    },[])
-
-    return (
-        <div className="home">
-            <div className="workouts">
-                {workouts&&workouts.map(()=>(
-                    <WorkoutDetails key={workout._id} workouts={workout}/>
-                ))}
-            </div>
-            <workoutForm/>
-        </div>
-    )
-}
-
-export default Home
+export default Home;
