@@ -201,3 +201,140 @@ form.create button:hover {
     width: 100%;
   }
 }
+
+/* -------------------------
+   Auth Forms (Login / Signup)
+-------------------------- */
+form.login,
+form.signup {
+  background: #ffffff;
+  max-width: 420px;
+  margin: 80px auto;
+  padding: 40px 36px;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+form.login:hover,
+form.signup:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+form.login h3,
+form.signup h3 {
+  margin-bottom: 24px;
+  color: #007bff;
+  font-size: 1.6rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+form.login label,
+form.signup label {
+  display: block;
+  margin-top: 18px;
+  color: #444;
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+form.login input,
+form.signup input {
+  width: 100%;
+  padding: 12px 14px;
+  margin-top: 6px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  font-size: 1rem;
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+form.login input:focus,
+form.signup input:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+
+form.login button,
+form.signup button {
+  margin-top: 28px;
+  background: #007bff;
+  color: #fff;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+}
+
+form.login button:hover,
+form.signup button:hover {
+  background: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Center the forms on smaller screens */
+@media (max-width: 500px) {
+  form.login,
+  form.signup {
+    margin: 60px 16px;
+    padding: 32px 24px;
+  }
+}
+
+/* -------------------------
+   Navbar Links
+-------------------------- */
+header nav div {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+header nav div a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s, border-bottom 0.2s;
+  position: relative;
+}
+
+header nav div a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #007bff;
+  transition: width 0.3s ease;
+}
+
+header nav div a:hover {
+  color: #007bff;
+}
+
+header nav div a:hover::after {
+  width: 100%;
+}
+
+/* Navbar adjustments for small screens */
+@media (max-width: 600px) {
+  header .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  header nav div {
+    gap: 14px;
+    margin-top: 10px;
+  }
+}
